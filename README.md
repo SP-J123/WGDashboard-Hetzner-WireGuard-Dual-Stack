@@ -81,21 +81,23 @@ You can build the entire server automatically during VPS creation.
 
 > [!WARNING]  
 > **Mandatory Setting for IPv6 Peer Routing!**  
-> By default, WGDashboard creates peer configurations that route only IPv4 traffic over the tunnel. If you want a peer to truly utilize these IPv6 optimizations, you must manually update their `AllowedIPs` setting within the Web UI.
+> By default, WGDashboard creates peer configurations that route only IPv4 traffic over the tunnel. To utilize these IPv6 optimizations on all your devices, you must update the global **Peer Settings** within the Web UI so that all newly created peers automatically route IPv6 traffic.
 
-1. Log in to your deployed WGDashboard.
-2. Go to **Peers** -> **Add Peer** (or Edit an existing one).
-3. In the configuration popup, find the `AllowedIPs` box.
-4. By default, it says `0.0.0.0/0`. 
-5. You must change it to EXACTLY this: 
+1. Log in to your newly deployed WGDashboard.
+2. Navigate to the **Settings** menu at the top.
+3. Scroll down to the **Peer Settings** section.
+4. Find the **`AllowedIPs`** configuration box.
+5. By default, it says `0.0.0.0/0`. 
+6. You must change it to EXACTLY this: 
 
    ```ini
    0.0.0.0/0, ::/0
    ```
 
-Changing this setting ensures that your laptop or mobile phone knows to send *both* the IPv4 Universe (`0.0.0.0/0`) AND the IPv6 Universe (`::/0`) deeply into the VPN tunnel. 
+7. Scroll to the bottom of the page and click **Save**.
 
-*(**Pro-Tip:** If you apply this formatting inside your WGDashboard **Global Settings**, all newly created peers will instantly support true Dual-Stack routing from that point onward!)*
+Changing this global setting ensures that any laptop, server, or mobile phone you add to the dashboard in the future will automatically know to send *both* the IPv4 Universe (`0.0.0.0/0`) AND the IPv6 Universe (`::/0`) deeply into the VPN tunnel!
+
 
 ---
 
